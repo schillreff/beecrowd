@@ -22,13 +22,9 @@
 # 150.00                # A=70685.7750
 
 
-
-# Leitura da entrada no terminal
 raio = float(input())
 
-# Cálculo da área
 pi = 3.14159
 area = pi * raio**2
 
-# Saída formatada com 4 casas decimais
 print(f"A={area:.4f}")

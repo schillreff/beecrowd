@@ -130,3 +130,8 @@ dist
 .pnp.*
 
 package*
+
+input.txt
+.idea
+kotlin.iml
+main

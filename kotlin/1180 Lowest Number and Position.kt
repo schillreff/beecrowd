@@ -21,41 +21,28 @@
 // Menor valor: -5
 // Posicao: 4
 
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
-public class Main {
+fun main(args: Array<String>) {
+    val reader = BufferedReader(InputStreamReader(System.`in`))
 
-    public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
+    val n = reader.readLine().toInt()
 
-        int N = scanner.nextInt();
+    val line = reader.readLine()
 
-        // Verifica a condição 1 < N < 1000
-        if (N > 1 && N < 1000) {
+    val arrayX = line.trim().split(Regex("\\s+")).map { it.toInt() }
 
-            int[] arrayX = new int[N];
+    var minValue = arrayX[0]
+    var position = 0
 
-            // Leitura dos N números inteiros para o array
-            for (int i = 0; i < N; i++) {
-                arrayX[i] = scanner.nextInt();
-            }
-
-            int minValue = arrayX[0];
-            int position = 0;
-
-            // Encontra o menor valor e sua posição
-            for (int i = 1; i < N; i++) {
-                if (arrayX[i] < minValue) {
-                    minValue = arrayX[i];
-                    position = i;
-                }
-            }
-
-            System.out.println("Menor valor: " + minValue);
-            System.out.println("Posicao: " + position);
+    for (i in 1 until n) { 
+        if (arrayX[i] < minValue) {
+            minValue = arrayX[i]
+            position = i
         }
-
-        scanner.close();
     }
+
+    println("Menor valor: $minValue")
+    println("Posicao: $position")
 }

@@ -28,17 +28,19 @@
 
 // 12.6
 
-let input = require("fs").readFileSync("/dev/stdin", "utf8");
-let lines = input.split("\n");
+import * as fs from 'fs';
 
-let C = parseInt(lines.shift());
-let T = lines.shift().trim();
+const input: string = fs.readFileSync("/dev/stdin", "utf8");
+let lines: string[] = input.split("\n");
 
-let total = 0.0;
+let C: number = parseInt(lines.shift() as string);
+let T: string = (lines.shift() as string).trim();
 
-for (let i = 0; i < 12; i++) {
-    for (let j = 0; j < 12; j++) {
-        let value = parseFloat(lines.shift());
+let total: number = 0.0;
+
+for (let i: number = 0; i < 12; i++) {
+    for (let j: number = 0; j < 12; j++) {
+        let value: number = parseFloat(lines.shift() as string);
 
         if (j === C) {
             total += value;
@@ -47,7 +49,7 @@ for (let i = 0; i < 12; i++) {
 }
 
 if (T === "M") {
-    total /= 12;
+    total /= 12.0;
 }
 
 console.log(total.toFixed(1));

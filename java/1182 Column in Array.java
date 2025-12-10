@@ -5,9 +5,6 @@
 // illustrates the case when is entered the number 5 to the array column, showing all elements 
 // that must be considered in the operation.
 
-
-
-
 // Input
 // The first line of the input contains a simple integer C (0 ≤ C ≤ 11) indicating the column
 //  to be considered in the operation. The second line of the input contains a single uppercase
@@ -28,26 +25,36 @@
 
 // 12.6
 
-let input = require("fs").readFileSync("/dev/stdin", "utf8");
-let lines = input.split("\n");
+import java.io.IOException;
+import java.util.Scanner;
 
-let C = parseInt(lines.shift());
-let T = lines.shift().trim();
+public class Main {
 
-let total = 0.0;
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
 
-for (let i = 0; i < 12; i++) {
-    for (let j = 0; j < 12; j++) {
-        let value = parseFloat(lines.shift());
+        int columnIndex = scanner.nextInt();
+        String operationType = scanner.next();
 
-        if (j === C) {
-            total += value;
+        double totalSum = 0.0;
+        int matrixSize = 12;
+
+        for (int i = 0; i < matrixSize; i++) {
+            for (int j = 0; j < matrixSize; j++) {
+                double value = scanner.nextDouble();
+
+                if (j == columnIndex) {
+                    totalSum += value;
+                }
+            }
         }
+
+        if (operationType.equals("M")) {
+            System.out.println(String.format("%.1f", totalSum / matrixSize));
+        } else {
+            System.out.println(String.format("%.1f", totalSum));
+        }
+
+        scanner.close();
     }
 }
-
-if (T === "M") {
-    total /= 12;
-}
-
-console.log(total.toFixed(1));
